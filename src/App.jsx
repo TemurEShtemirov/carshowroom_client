@@ -129,7 +129,11 @@ function App() {
               onChange={handleEngineChange}
             >
               <option value="">All</option>
-              <option value="V6">V6</option>
+              {cars.map((engine_car) => (
+                <option value={engine_car.engine} key={engine_car.id}>
+                  {engine_car.engine}
+                </option>
+              ))}
               <option value="V8">V8</option>
               <option value="Electric">Electric</option>
             </select>
@@ -195,11 +199,11 @@ function App() {
             <div className="card">
               <img
                 className="card-img-top"
-                src={car.imageUrl}
-                alt={car.make}
+                src={car.image}
+                alt={car.name}
               />
               <div className="card-body">
-                <h5 className="card-title">{car.make}</h5>
+                <h5 className="card-title">{car.name}</h5>
                 <p className="card-text">Engine: {car.engine}</p>
                 <p className="card-text">Type: {car.type}</p>
                 <p className="card-text">Price: ${car.price}</p>
